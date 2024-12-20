@@ -63,27 +63,26 @@ The SQL commands can be divided into three groups based on the type of functiona
 - DCL - used to manage access to the database by granting or revoking permissions.
 - TCL - commands to manage transactions within a database to ensure data integrity.
 
-SQL commands have simple syntax and conventions, compared to say Python or Bash. A basic SQL query looks like this:
+SQL commands have simple syntax and conventions, compared to say Python or Bash. A basic SQL query looks like this - *Don't worry about what it does right now, we'll come back to it shortly*:
 
 ```sql
-SELECT * FROM Customers WHERE Name = “Company A”;
+SELECT * FROM customers WHERE Name = “Company A”;
 ```
 
-Commonly they’re split over multiple lines for readability. SQL doesn’t care about newlines, it looks for the semi-colon (;) to end the statement.
+Commonly they’re split over multiple lines for readability. SQL doesn’t care about newlines, it looks for the semi-colon (;) to end the statement - missing the semi-colon is a common mistake, if your terminal is showing this prompt `->` it often means you missed the `;`.
 
 ```sql
-SELECT * FROM Customers 
+SELECT * FROM customers 
 WHERE Name = “Company A”;
 ```
 
-One convention is that SQL keywords are capitalised, therefore it makes sense that your tables and fields should not be.
+One convention is that SQL keywords are capitalised, therefore for easy readability tables and fields are usually in lower case. **NOTE: SQL keywords are not case-sensitive, but database, table, and field names are.**
 
 ### SQL Tables
 
 A database will typically contain multiple tables, but exactly which ones is up to you and your organisation’s needs. 
-A common example is to consider a business which needs an employee_table, customer_table, products_table, and an orders_table.
 
-*Instructor prompt: WB*
+A common example when learning is to model a simple business which needs a customer_table, products_table, and an orders_table.
 
 Tables in SQL are comprised of Fields (columns) and Records (rows), each record is an new entry in the database, and the fields are the data items captured for each record.
 
@@ -92,6 +91,8 @@ Every record in the table needs a unique identifier, known as a ‘Primary Key�
 When one table has a field for another table’s Primary Key, such as an Orders table referencing a Customer_ID number when they make a purchase, we call this a Foreign Key. 
 
 Linking Primary and Foreign keys is how we create relationships between tables.
+
+*Instructor prompt: WB*
 
 ### SQL Schema
 
@@ -116,7 +117,7 @@ We’re only using two data types, INTs and VARCHARS, but many more area availab
 
 ### SQL Data Types
 
-Although some of the different SQL databases have been developed to support niche data types and features, there are lots of data types supported by all:
+Although some of the different SQL databases have been developed to support niche data types and features, most standard data types are supported by all:
 - INT = whole numbers, use UNSIGNED to restrict to positive numbers only.
 - DECIMAL = decimal numbers to a defined precision e.g. DECIMAL(8, 2) stores up to 8 digits, with 2 after the decimal point. 
 - CHAR(number) = a fixed length string
@@ -127,27 +128,27 @@ And many others…
 
 ### Practical 2
 
-- Practice creating and dropping databases and tables
+- Practice creating and dropping databases and tables.
 - Try to use CREATE, DROP, SHOW, USE, and DESCRIBE.
 
 ### Working with Data
 
 Adding records to the database can be done in a number of ways. We are going to use standard SQL commands through the CLI, but this would not be suitable for a non-technical user.
 
-Commonly a GUI can be created which translates user input into the appropriate SQL statements in the back-end.
+Commonly a GUI can be created which translates user input into the appropriate SQL statements in the back-end, allowing these users to add and query data in a user-friendly environment.
 
-Alternatively, data can be imported and exported in bulk using a variety of file types, a common option being CSV files.
+Data can also be imported and exported in bulk using a variety of file types, a common option being CSV files.
 
 ### Inserting Records
 
-Adding records into a table can be done with the INSERT statement:
+Adding records into a table can be done with the INSERT statement as follows:
 
 ```sql
 INSERT INTO customers (customer_ID, first_name, last_name, age) 
 VALUES (1, 'Alice', 'Smith', 33);
 ```
 
-As we're just learning, it's good practice to verfiy your data entry. You can do so by running
+As we're just learning, it's good practice to verfiy your record, you can do so by running a simple SELECT statement.
 
 ```sql
 SELECT * FROM customers;
@@ -155,7 +156,7 @@ SELECT * FROM customers;
 
 We'll come back to the SELECT statement shortly.
 
-There are some syntax variations that can improve efficiency if you want to add data to all, or just specific fields in a record, but the basic logic is like the example.
+We'll look at some variations which can add multiple records at once through the CLI, but you should probably stick to one at a time for now to build familarity with the logic.
 
 ### Updating Records
 
@@ -167,12 +168,13 @@ SET Age = 31
 WHERE customer_ID = 1;
 ```
 
-Notice the WHERE clause, this allows you to filter the records you retrieve from the database, in this case to make a simple update. But this is the key to retrieving, and gaining insights into your data. 
+Notice the WHERE clause, this allows you to filter the records you retrieve from the database, in this case to make a simple update. But this is the key to retrieving with the SELECT statement, and gaining insights into your data. 
 
 ### Practical 3
 
 - Create customers, and products tables with appropriate fields defined.
 - Insert records into each table.
+- Verify your records with `SELECT * FROM [table]`
 - Update records.
 
 ### Selecting Records
@@ -193,11 +195,13 @@ FROM customers
 WHERE customer_ID = 3;
 ```
 
-Quick retrieval is one of the primary uses for a database, commonly GUI based applications which are easy for non-technical users to navigate and interact with, have databases in the back-end, such as a CRM system which looks up customer information when they call in for support. Or a web-based storefront, in which all of the product information is recalled from a database as the customer navigates the different items.
+Quick retrieval is one of the primary uses for a database, commonly GUI based applications which are easy for non-technical users to navigate and interact with, have databases in the back-end, such as a CRM system which looks up customer information when they call in for support; Or a web-based storefront, in which all of the product information is recalled from a database as the customer navigates the different items.
 
 ### Practical 4
 
 - Add several records and practice SELECT statements against created tables
+
+### More SELECT statements
 
 #### Comparison Operators
 
@@ -232,7 +236,7 @@ We do have the ability to match patterns in strings, but we use the LIKE or NOT 
 |Exactly X characters long  |'___' (3 here)|
 |_ can be any character     |'a_c'         |
 
-Example
+Here's an example of the syntax.
 
 ```sql
 SELECT first_name, last_name 
@@ -246,7 +250,7 @@ You can write queries to identify not only the best selling products, and the bi
 
 This extra insight might inform decisions for marketing teams, promotion planning, inventory purchasing, future investment, and so on…
 
-### Sorting Results
+#### Sorting Results
 
 The ORDER BY clause allows you to specify the order your returned records will be displayed.
 
@@ -260,9 +264,9 @@ You can provide multiple sort fields by seperating them with a comma.
 SELECT * FROM customers WHERE age <10 ORDER BY last_name, first_name;
 ```
 
-### Deleting Records
+#### Deleting Records
 
-The query syntax you're becoming familiar with can also be used to delete individual or multiple records as needed
+The query syntax you're becoming familiar with can also be used to delete individual or multiple records as needed.
 
 ```sql
 DELETE FROM customers WHERE first_name LIKE 'Alice';
@@ -277,13 +281,13 @@ DELETE FROM customers WHERE first_name LIKE 'Alice';
 
 #### Create the Tables
 
-We've already made multiple tables, but so far they aren't *related* to each other. Let's change that...
-
 Most databases will require several tables, because for example, the customer table is not suitable for storing data related to the products you have in your inventory. So customers and products will be separate tables, with different schemas according to the type of data to be stored.
 
-Some tables are populated with data from others, for example an orders table might take data from the customers table and the products table to make a new entry.
+We've already made multiple tables, but so far they aren't *related* to each other. Let's change that.
 
-Ideally when one table references another it should reference the target table’s Primary Key, and we define the field in the destination table as a Foreign key. 
+Ideally when one table references another it should reference the target table’s Primary Key, and we define the field in the new table as a FOREIGN key.
+
+Hopefully your CREATE TABLE statements look something like the above example.
 
 ```sql
 CREATE TABLE customers (
@@ -299,8 +303,9 @@ CREATE TABLE products (
     product_price DECIMAL(10,2)
 );
 ```
+Some tables are populated with data from others, our Orders table might take data from customers and products tables to make a new entry.
 
-Hopefully your CREATE TABLE statements look something like the above example, now we're going to create an orders table which references both customers and products by creating FOREIGN KEYS.
+Now we're going to create an orders table which references both customers and products by creating foreign.
 
 ```sql
 CREATE TABLE orders (
@@ -314,7 +319,7 @@ CREATE TABLE orders (
 );
 ```
 
-It's important that the FOREIGN key and the PRIMARY key it references contain the same data type and attributes or you'll get an error.
+**The FOREIGN key and the PRIMARY key it references should contain the same data type and attributes or you'll likely get an error.**
 
 #### Add some Records
 
@@ -333,9 +338,9 @@ VALUES
 -- Insert records into the products table
 INSERT INTO products (product_id, product_name, product_price)
 VALUES
-    (101, 'Laptop', 999.99),
-    (102, 'Phone', 599.99),
-    (103, 'Tablet', 399.99);
+    (101, 'Ryzen 7 Laptop', 1299.99),
+    (102, 'iPhone 14', 799.99),
+    (103, '27" Monitor', 199.99);
 
 -- Insert records into the orders table
 INSERT INTO orders (order_id, customer_id, product_id, order_date, order_quantity)
@@ -347,23 +352,25 @@ VALUES
 
 ### Practical 6
 
-- Make customers, products, and orders tables, and add records to them
+- Make customers, products, and orders tables, add records to them, ensure you can query the individual tables.
 
 #### Query Multiple Tables
 
-Now we have records in each table, but the orders table includes two fields which link to unique fields (i.e. primary keys) in neighbouring tables.
+Now we have records in each table, and two of the fields in the orders table reference unique fields (i.e. primary keys) in neighbouring tables.
 
-We've already retrieved data from individual tables, and we can view orders from the orders table in the same way. Practice this again if you need to, but with this table structure and primary/foreign key relationships, we can retrieve data from related tables together.
+We've already retrieved data from individual tables, and we can view orders from the orders table in the same way. With this table structure and primary/foreign key relationships, we can create more complex SELECT statements to retrieve data from related tables together.
 
-Let's say completed orders need to go to the despatch team for packing and postage. They look at the orders table, and know what products to pick and package, *but where do they send it*? 
+For example, in our companies, let's say completed orders need to go to the Despatch Team for packing and postage. They look at the orders table, and it tells them what products to pick and package, *but where do they send it*? 
 
-One option could be to duplicate the customer details from the customer table to the orders table when they place an order. Why would this not be ideal?
+One option could be to duplicate the customer details from the customer table to the orders table when they place an order. 
 
-The key reasons are:
+*Question:* Why would this not be ideal?
+
+*Answer:* The key reasons are:
 - Data duplication is inefficient and wastes space on disk.
 - If the data changes it needs to be changed in multiple locations. If the data doesn't match in different locations how would you know which one is accurate?
 
-Instead we want to retrieve the current customer contact details from the most up to date source, i.e. the customer table. We can do this because there is a relationship between the tables in our *relational database*.
+It would be better to retrieve the current customer contact details from the most up to date source, i.e. the customer table. We can do this because there is a relationship between the customer and orders tables in our *relational database*.
 
 The following SQL statement will retrieve the customer's first and last name for a particular record in the orders table, even though this data is not stored in the orders table. 
 
@@ -376,10 +383,10 @@ WHERE orders.order_id = 201;
 
 ### Joins
 
-JOIN operations combine rows from two or more tables based on a related column. In our example both tables share the customer_id field, so the query:
-1. Starts with the orders table and finds the row with order_id 201.
-2. It then uses the customer_id from that row to find the corresponding row in the customers table.
-3. Finally, it selects the first_name and last_name from the customers table and returns it as the result.
+JOIN operations combine rows from two or more tables based on a related column. In our example both tables share the customer_id field, so the above query:
+1. Starts with the orders table and finds the record with order_id 201.
+2. It then uses the customer_id from that record to find the corresponding record in the customers table.
+3. Finally, it selects the first_name and last_name from the appropriate record, and returns them as the result.
 
 ### Aliases
 
@@ -396,7 +403,7 @@ WHERE o.order_id = 201;
 
 ### Practical 7
 
-- Experiment with the above syntax to create queries against your records.
+- Experiment with the above syntax to create queries against your records using the join statement.
 
 ### Join Types
 
@@ -437,3 +444,14 @@ Transactions must adhere to the following ACID properties:
 - Durability: Ensures that once a transaction is committed, its changes are permanently stored.
 
 **Don’t worry about the commands or syntax for transactions, at our level just appreciate that these types of operations are traditionally one of the key features, and benefits of SQL databases.**
+
+### Practical Challenge
+
+- Model a company. Feel free to use the example statements from the lesson as a starting point, but they're very generic. Build them out with more fields that are tailored to your company's needs. 
+
+    Some examples of how you might build the DB out include:
+    - Add an employees table, and a field to the orders table identifying which employee made the sale.
+    - Add fields to the products table to better model a company, e.g. quantity of each item in stock, item categories, colour options, sizes, etc.
+    - Expand the customers table with more fields, and create queries which will generate shipping labels. 
+
+    Anything else you can think of.
