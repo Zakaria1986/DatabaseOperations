@@ -171,9 +171,9 @@ Notice the WHERE clause, this allows you to filter the records you retrieve from
 
 ### Practical 3
 
-- Create customers, and products tables
-- Insert records into each table
-- Update records
+- Create customers, and products tables with appropriate fields defined.
+- Insert records into each table.
+- Update records.
 
 ### Selecting Records
 
@@ -185,11 +185,19 @@ FROM customers
 WHERE customer_ID = 1;
 ```
 
+The above example uses the wildcard `*` to return all fields, but you can also specify the specific fields you want.
+
+```sql
+SELECT first_name, last_name
+FROM customers
+WHERE customer_ID = 3;
+```
+
 Quick retrieval is one of the primary uses for a database, commonly GUI based applications which are easy for non-technical users to navigate and interact with, have databases in the back-end, such as a CRM system which looks up customer information when they call in for support. Or a web-based storefront, in which all of the product information is recalled from a database as the customer navigates the different items.
 
 ### Practical 4
 
-- Practice SELECT statements against created tables
+- Add several records and practice SELECT statements against created tables
 
 #### Comparison Operators
 
@@ -216,13 +224,13 @@ The following comparison operators can be used
 
 We do have the ability to match patterns in strings, but we use the LIKE or NOT LIKE clauses in our SQL statements.  
 
-|Pattern            |Syntax |
-|-------------------|-------|
-|Strings starting with 'abc'|'abc%'   |
-|Strings ending with 'abc'  |'%abc'   |
-|'abc' within the string    |'%abc%'  |
+|Pattern                    |Syntax        |
+|---------------------------|--------------|
+|Strings starting with 'abc'|'abc%'        |
+|Strings ending with 'abc'  |'%abc'        |
+|'abc' within the string    |'%abc%'       |
 |Exactly X characters long  |'___' (3 here)|
-|_ can be any character     |'a_c'    |
+|_ can be any character     |'a_c'         |
 
 Example
 
@@ -238,11 +246,36 @@ You can write queries to identify not only the best selling products, and the bi
 
 This extra insight might inform decisions for marketing teams, promotion planning, inventory purchasing, future investment, and so on…
 
+### Sorting Results
+
+The ORDER BY clause allows you to specify the order your returned records will be displayed.
+
+```sql
+SELECT * FROM customers WHERE age <10 ORDER BY first_name;
+```
+
+You can provide multiple sort fields by seperating them with a comma.
+
+```sql
+SELECT * FROM customers WHERE age <10 ORDER BY last_name, first_name;
+```
+
+### Deleting Records
+
+The query syntax you're becoming familiar with can also be used to delete individual or multiple records as needed
+
+```sql
+DELETE FROM customers WHERE first_name LIKE 'Alice';
+```
+
 ### Practical 5
 
-- Practice SELECT statements using comparison operators and pattern matching clauses
+- Practice SELECT statements using comparison operators and pattern matching clauses.
+- Practice using ORDER BY to sort your output, and try DELETING records.
 
 ### Multiple Tables
+
+#### Create the Tables
 
 We've already made multiple tables, but so far they aren't *related* to each other. Let's change that...
 
@@ -283,6 +316,8 @@ CREATE TABLE orders (
 
 It's important that the FOREIGN key and the PRIMARY key it references contain the same data type and attributes or you'll get an error.
 
+#### Add some Records
+
 Lets add some data to the tables. We'll also update our syntax to add multiple records at once. 
 
 *It is recommended that you copy the following examples to a text editor and extend them so you have more data to work with before running them in MySQL*
@@ -309,6 +344,12 @@ VALUES
     (202, 2, 102, '2023-11-23', 1),
     (203, 3, 103, '2023-11-24', 3);
 ```
+
+### Practical 6
+
+- Make customers, products, and orders tables, and add records to them
+
+#### Query Multiple Tables
 
 Now we have records in each table, but the orders table includes two fields which link to unique fields (i.e. primary keys) in neighbouring tables.
 
@@ -352,6 +393,10 @@ FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 WHERE o.order_id = 201;
 ```
+
+### Practical 7
+
+- Experiment with the above syntax to create queries against your records.
 
 ### Join Types
 
