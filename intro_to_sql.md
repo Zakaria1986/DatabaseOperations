@@ -12,9 +12,9 @@ The software that lets you create, manage, and query databases, is called a **re
 - Microsoft SQL Server
 
 ### Practical 1
-
+[Click here for the Practical 1 guide](Practical_1.md)
+- Restore VM from Snapshot
 - Install MySQL
-- snapshot VM
 
 ### SQL Databases
 
