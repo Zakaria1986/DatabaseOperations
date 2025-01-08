@@ -42,5 +42,5 @@ CREATE TABLE table_name (
 
 SHOW tables;
 
-DESCRIBE customers;
+DESCRIBE table_name;
 ```

@@ -130,6 +130,7 @@ And many others…
 
 ### Practical 2
 
+[Click here for the Practical 2 guide](Practical_2.md)
 - Practice creating and dropping databases and tables.
 - Try to use CREATE, DROP, SHOW, USE, and DESCRIBE.
 
@@ -174,6 +175,7 @@ Notice the WHERE clause, this allows you to filter the records you retrieve from
 
 ### Practical 3
 
+[Click here for the Practical 3 guide](Practical_3.md)
 - Create customers, and products tables with appropriate fields defined.
 - Insert records into each table.
 - Verify your records with `SELECT * FROM [table]`
