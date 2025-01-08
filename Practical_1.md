@@ -3,11 +3,11 @@
 
 We are going to deploy MySQL on your Linux VM from the CLI. 
 
-There are many GUI options available which can make it easier to create and manage databases, tables, and records. But if you learn a GUI, then you tend to only know that GUI. If we learn the concepts through the CLI it's easier to apply them to any environment. 
+There are many GUI options available which can make it easier to create and manage databases, tables, and records. But if you learn a GUI, then you tend to only know that GUI, if we learn the concepts through the CLI it's easier to apply them to any environment.
 
 ### Restore Your VM
 
-You should have a snapshot of your VM upon it's initial first boot. Restore to this snapshot. We do not want anything to do with any of your Linux labs running.
+You should have a snapshot of your VM upon it's initial first boot, restore to this snapshot. We do not want anything to do with any of your Linux labs running.
 
 If you do not have a first boot snapshot, it is recommended that you re-import your VM and take one. 
 

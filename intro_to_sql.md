@@ -76,7 +76,7 @@ SELECT * FROM customers
 WHERE Name = “Company A”;
 ```
 
-One convention is that SQL keywords are capitalised, therefore for easy readability tables and fields are usually in lower case. **NOTE: SQL keywords are not case-sensitive, but database, table, and field names are.**
+One convention is that SQL keywords are capitalised, therefore for easy readability tables and fields are usually in lower case. **NOTE: SQL keywords are not case-sensitive, but database names, table names, and field names are.**
 
 ### SQL Tables
 
@@ -107,13 +107,15 @@ CREATE TABLE customers (
 );
 ```
 
+As a reminder, recall that our SQL statements can be written on one long line, but using this format allows is easier because each line represents a field in the table, and that field's properties.
+
 Like with the database, we can verify our table was created with `SHOW tables;`, but to ensure that all of our data types and additional options are configured correctly we can see a more detailed overview with
 
 ```sql
 DESCRIBE customers;
 ```
 
-We’re only using two data types, INTs and VARCHARS, but many more area available. However, there are several points worth reviewing…
+We’re only using two data types in our customers table, INTs and VARCHARS, many more are available, and several standard ones worth reviewing…
 
 ### SQL Data Types
 
