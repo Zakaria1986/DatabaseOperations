@@ -360,7 +360,9 @@ VALUES
 
 ### Practical 6
 
-- Make customers, products, and orders tables, add records to them, ensure you can query the individual tables.
+[Click here for the Practical 6 guide](Practical_6.md)
+- Make customers, products, and orders tables with PRIMARY and FOREIGN KEYs.
+- Add records to them, and ensure you can query the individual tables.
 
 #### Query Multiple Tables
 
