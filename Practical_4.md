@@ -62,11 +62,11 @@ VALUES
 ```sql
 SELECT * 
 FROM products
-WHERE product_price < 600;
+WHERE product_price = 599.99;
 ```
 
 ```sql
 SELECT * 
 FROM customers
-WHERE last_name = 'Foy';
+WHERE age = 5;
 ```

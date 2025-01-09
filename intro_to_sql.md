@@ -280,14 +280,16 @@ DELETE FROM customers WHERE first_name LIKE 'Alice';
 
 ### Practical 5
 
+[Click here for the Practical 5 guide](Practical_5.md)
 - Practice SELECT statements using comparison operators and pattern matching clauses.
-- Practice using ORDER BY to sort your output, and try DELETING records.
+- Practice using ORDER BY to sort your output. 
+- Try DELETING records.
 
 ### Multiple Tables
 
 #### Create the Tables
 
-Most databases will require several tables, because for example, the customer table is not suitable for storing data related to the products you have in your inventory. So customers and products will be separate tables, with different schemas according to the type of data to be stored.
+Most databases will require several tables, because for example, the customer table is not suitable for storing data related to the products you have in your inventory. So customers and products are separate tables, with different schemas according to the type of data to be stored.
 
 We've already made multiple tables, but so far they aren't *related* to each other. Let's change that.
 
