@@ -1,5 +1,5 @@
 # Practical 6
-## Working with Multiple Tables
+## Creating Joined Tables
 
 We need to create tables which are joined, and it is unlikely that your sample tables will be suitable for this. They may be, but only if you have one field which contains values from the other's primary key, which they can be joined upon. Although you may be able to tweak your table schemas to accomplish this.
 

@@ -361,14 +361,14 @@ VALUES
 ### Practical 6
 
 [Click here for the Practical 6 guide](Practical_6.md)
-- Make customers, products, and orders tables with PRIMARY and FOREIGN KEYs.
+- Make customers, products, and orders tables with `PRIMARY` and `FOREIGN` keys.
 - Add records to them, and ensure you can query the individual tables.
 
 #### Query Multiple Tables
 
 Now we have records in each table, and two of the fields in the orders table reference unique fields (i.e. primary keys) in neighbouring tables.
 
-We've already retrieved data from individual tables, and we can view orders from the orders table in the same way. With this table structure and primary/foreign key relationships, we can create more complex SELECT statements to retrieve data from related tables together.
+We've already retrieved data from individual tables, and we can view orders from the orders table in the same way. With this table structure and primary/foreign key relationships, we can create more complex `SELECT` statements to retrieve data from related tables together.
 
 For example, in our companies, let's say completed orders need to go to the Despatch Team for packing and postage. They look at the orders table, and it tells them what products to pick and package, *but where do they send it*? 
 
@@ -393,14 +393,14 @@ WHERE orders.order_id = 201;
 
 ### Joins
 
-JOIN operations combine rows from two or more tables based on a related column. In our example both tables share the customer_id field, so the above query:
-1. Starts with the orders table and finds the record with order_id 201.
-2. It then uses the customer_id from that record to find the corresponding record in the customers table.
-3. Finally, it selects the first_name and last_name from the appropriate record, and returns them as the result.
+JOIN operations combine rows from two or more tables based on a related column. In our example both tables share the `customer_id` field, so the above query:
+1. Starts with the orders table and finds the record with `order_id 201`.
+2. It then uses the `customer_id` from that record to find the corresponding record in the customers table, which it can do because they're joined on their related fields.
+3. Finally, it selects the `first_name` and `last_name` from the appropriate record, and returns them as the result.
 
 ### Aliases
 
-Review the previous SQL statement again, notice how many times the words *customer* and *orders* are used? It's not unusual for SQL statements to become tricky for humans to read accurately, especially as you start to have many similarly named tables, and you spend 8 hours per day staring at them (if you pursue a DB Admin career path)!
+Review the previous SQL statement again, notice how many times the words *customer* and *orders* are used? It's not unusual for SQL statements to become tricky for humans to read accurately, especially as you start to have many similarly named tables, and you spend 8 hours per day staring at them (if you pursue a DB Admin career path).
 
 Aliases allow you to define a more convenient or readable name for your tables which can be used elsewhere in your statements.
 
@@ -412,16 +412,16 @@ WHERE o.order_id = 201;
 ```
 
 ### Practical 7
-
-- Experiment with the above syntax to create queries against your records using the join statement.
+[Click here for the Practical 7 guide](Practical_7.md)
+- Experiment with the above syntax to create queries against multiple tables using the join statement.
 
 ### Join Types
 
 There are three common types of joins:
 
-- INNER - An *Inner* join returns results from both tables which match the query condition. Our example above is an Inner join, using JOIN or INNER JOIN will both create this type of query.
+- INNER - An `INNER` join returns results from both tables which match the query condition. Our example above is an Inner join, using `JOIN` or `INNER JOIN` will both create this type of query.
 
-- FULL (OUTER) - A Full or Outer join returns results from both tables, even where results from one table doesn't match the condition. E.g.
+- FULL (OUTER) - A `FULL` or `OUTER` join returns results from both tables, even where results from one table doesn't match the condition. E.g.
 
 |Student    |Course |Score  |
 |-----------|------ |-------|
@@ -432,11 +432,11 @@ There are three common types of joins:
 |Jess       |AZ     |Null   |
 |Richard    |AZ     |93     |
 
-Let's say we wanted to know the exam scores for three students for the AWS and AZ exams. With an Inner Join we would only get results for Jess because she has done both tests. With an Outer Join we can retrieve results with a NULL value.
+Let's say we wanted to know the exam scores for three students for the AWS and AZ exam, and the results are kept in separate tables; With an Inner Join we would only get results for Richard because only he has done both tests. With an Outer Join we can retrieve results with a NULL value.
 
-- LEFT (OUTER) JOIN - Behaves like the Full Join, but it can only retrieve *none-matching* records from the left table, the table on the right's records must match the query condition.
+- LEFT (OUTER) JOIN - Behaves like the Full Join, but it can only retrieve *none-matching* records from the left table, the table on the right's records must match the query condition. In the example table above, only the NULL values from AWS or AZ would return, you wouldn't get the NULLs from the other.
 
-- RIGHT (OUTER) JOIN - As above, but the table on the right can return unmatched records, and the left must meet the query.
+- RIGHT (OUTER) JOIN - As above, but the table on the right can return unmatched records, and the left must meet the query. FYI. When these JOINS refer to LEFT and RIGHT, that is the order you provide them in your SELECT statement.
 
 <img src="img/joins.jpg" width="600" />
 
@@ -453,15 +453,8 @@ Transactions must adhere to the following ACID properties:
 - Isolation: Ensures that concurrent transactions do not interfere with each other.
 - Durability: Ensures that once a transaction is committed, its changes are permanently stored.
 
-**Don’t worry about the commands or syntax for transactions, at our level just appreciate that these types of operations are traditionally one of the key features, and benefits of SQL databases.**
+**Don’t worry about the commands or syntax for transactions, at our level just appreciate that these types of operations are traditionally one of the key features and benefits of SQL databases.**
 
 ### Practical Challenge
 
-- Model a company. Feel free to use the example statements from the lesson as a starting point, but they're very generic. Build them out with more fields that are tailored to your company's needs. 
-
-    Some examples of how you might build the DB out include:
-    - Add an employees table, and a field to the orders table identifying which employee made the sale.
-    - Add fields to the products table to better model a company, e.g. quantity of each item in stock, item categories, colour options, sizes, etc.
-    - Expand the customers table with more fields, and create queries which will generate shipping labels. 
-
-    Anything else you can think of.
+- Model a company. 
