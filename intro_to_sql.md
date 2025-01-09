@@ -203,7 +203,9 @@ Quick retrieval is one of the primary uses for a database, commonly GUI based ap
 
 ### Practical 4
 
-- Add several records and practice SELECT statements against created tables
+[Click here for the Practical 4 guide](Practical_4.md)
+- Create and populate tables
+- Use SELECT statements to query tables
 
 ### More SELECT statements
 
@@ -222,7 +224,7 @@ The following comparison operators can be used
 |Comparison         |Syntax |
 |-------------------|-------|
 |Equal              |=      |
-|Not equal          |= or !=|
+|Not equal          |!=     |
 |Greater            |>      |
 |Greater or equal   |>=     |
 |Less               |<      |
@@ -230,7 +232,7 @@ The following comparison operators can be used
 
 #### String Patterns
 
-We do have the ability to match patterns in strings, but we use the LIKE or NOT LIKE clauses in our SQL statements.  
+We also have the ability to match patterns in strings, but we use the LIKE or NOT LIKE clauses in our SQL statements.  
 
 |Pattern                    |Syntax        |
 |---------------------------|--------------|
@@ -245,7 +247,7 @@ Here's an example of the syntax.
 ```sql
 SELECT first_name, last_name 
 FROM customers 
-WHERE first_name LIKE 'Al%';
+WHERE first_name LIKE 'Sc%';
 ```
 
 The SELECT statement also allows you to analyse your data to identify patterns, trends, and answer questions. 
