@@ -457,4 +457,40 @@ Transactions must adhere to the following ACID properties:
 
 ### Practical Challenge
 
-- Model a company. 
+- Model a company.
+
+## Non-Relational (NoSQL) Databases
+
+We'll now look at non-relational databases, but we're not going to get hands on, partly because they're a bit more straight forward, and you don't need to learn a whole new language to use them.
+
+    NoSQL databases are a much more modern approach to storing and retrieving data. 
+
+NoSQL databases still need a table to store data, but the table is not strictly defined. Records within the table can be completely different and unrelated to each other, and consist of completely different data types. 
+
+    The lack of a strictly enforced schema is one of the key differences between SQL and NoSQL. 
+
+Another big difference is in the name, non-relational, this means that we do not connect different tables together, and queries are therefore not typically about retrieving records from multiple locations, applying logic and filters to them. 
+
+Instead, NoSQL queries are about SPEED! NoSQL DB's are best placed for quickly retrieving matching records, from perhaps billions, quickly. Does this sound like something you use regularly?
+
+???
+
+This type of database commonly powers internet search engines.
+
+There are billions of web pages, and we just want to quickly retrieve results relevant to our key words - we don't do complex searches with multiple data sources, and various comparison operators, we filter them ourselves, we just want them quickly!
+
+Some of the most commonly used NoSQL DBs include:
+
+- MongoDB
+- Cassandra
+- DynamoDB (AWS)
+- Cloud BigTable (GCP)
+- Cosmos DB (Azure - includes SQL and NoSQL services)
+
+### Database Scaling
+
+Due to it's legacy nature, SQL databases are built around an assumption that your DB will be installed on a single powerful server. If you need more performance from your SQL DB, pretty much your only option is to upgrade the server*. We call this **vertical scaling**, making a single resource more powerful by giving it more RAM, faster storage, more CPU cores, etc.
+
+\* *Modern cloud providers have developed services to overcome this limitation, but that is outside of the scope of this module.*
+
+NoSQL databases, having been developed in the era of virtualisation, are designed to work across multiple machines, or a **cluster**. To make this DB more powerful you can simply add more virtual machines to the cluster. This is known as **horizontal scaling**.
