@@ -597,10 +597,14 @@ What products sell best, at what time of the year, in what region? You can const
 
 Predictably, unstructured data is the opposite of structured, i.e. it is data which does not have a clear inherent meaning. This could be data which is gathered and stored, often in large quantities, such as log entries, sensor values, measurements, traffic data, etc. This data is often captured and dumped into text files, such as txt, CSV, JSON, XML, and others.
 
-Let's take:
+Let's take an extract from a line in a CSV (comma separated values) file, which could be a log entry:
 
 `12:45:54:12.01.25,24.101.57.13:54987,12:34:56:AB:CD:EF,197.165.1.24:443,centos`
 
-As it is, it's difficult to make any sense of the above string, it's unstructured. 
+As it is, it's difficult to make any sense of the above string or use it effectively in queries, so it's unstructured. 
 
-Often unstructured 
+Often unstructured data can be transformed into structured. In this case, if we could provide context, such as:
+
+`HH:MM:SS:DD:MM:YY,SRC_IP:PORT,SRC_MAC,DST_IP,UNAME`
+
+This line identifies each unique piece of information in between the commas, and will usually (hopefully) be defined on the first line of a CSV. This can be used to define your table schema, allowing you to import the data into a SQL database, allowing you to extract value and inform decisions.
