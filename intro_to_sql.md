@@ -56,7 +56,7 @@ Although you can interact with SQL databases via a GUI, SQL was developed at a t
 
 Many of the different types of SQL databases have their own additional features, such as supporting unique data types, or in some cases restrictions, such as naming conventions, but they should all support the standard SQL features and commands.
 
-The SQL commands can be divided into three groups based on the type of functionality they provide:
+The SQL commands can be divided into sub-groups based on the type of functionality they provide:
 - DDL - used to define the structure of the database and its objects such as tables, schemas, and indexes.
 - DML - used to manipulate data within the database
 - DQL - commands to retrieve data from the database
@@ -489,8 +489,86 @@ Some of the most commonly used NoSQL DBs include:
 
 ### Database Scaling
 
-Due to it's legacy nature, SQL databases are built around an assumption that your DB will be installed on a single powerful server. If you need more performance from your SQL DB, pretty much your only option is to upgrade the server*. We call this **vertical scaling**, making a single resource more powerful by giving it more RAM, faster storage, more CPU cores, etc.
+Due to it's legacy nature, SQL databases are built around an assumption that your DB will be installed on a single powerful server. If you need more performance from your SQL DB, the main approach is to upgrade the server*. We call this **vertical scaling**, i.e. making a single resource more powerful by giving it more RAM, faster storage, more CPU cores, etc.
 
-\* *Modern cloud providers have developed services to overcome this limitation, but that is outside of the scope of this module.*
+\* *Modern cloud providers have developed services to overcome this limitation, but that is outside of the scope of this module - we'll cover it in the cloud section*
 
-NoSQL databases, having been developed in the era of virtualisation, are designed to work across multiple machines, or a **cluster**. To make this DB more powerful you can simply add more virtual machines to the cluster. This is known as **horizontal scaling**.
+NoSQL databases, having been developed in the era of virtualisation, are designed to work across multiple machines, or a **cluster**. To make this DB more powerful you can simply add more machines to the cluster. This is known as **horizontal scaling**.
+
+When deploying to the cloud both scaling options are available, you can scale both vertically by deploying a more powerful VM, and horizontally by deploying more VM's to share the workload. However, one benefit of horizontal scaling is that in the case of a single server failure, your application or database can continue running on the remaining machines in the cluster.
+
+### Records in a NoSQL Database
+
+As mentioned, records in NoSQL DBs do not need to conform to a strict schema, this means that you can store any type of data in it. An entry could be a simple key value pair:
+
+```
+"Product_name" : "Frying Pan"
+```
+
+The value could be a link to an external resource:
+
+```
+"Product_image" : "http://[domain-name].com/[resource-path]"
+```
+
+Or, following a similar syntax to dictionaries in Python, a record could be a JSON object containing multiple KVP's which could be the attributes for that record:
+
+```
+"product_1" : {
+    "name" : "Frying Pan",
+    "image" : "http://scouts-catering.com/images/frying_pan.jpg",
+    "size" : "12 inches",
+    "colour" : "Green",
+    "material" : "Copper",
+    "induction" : "true"
+    "non-stick" : "true"
+    "price" : "19.99"
+    }
+```
+
+However, as a catering supply company, I sell a lot more than frying pans. The next record in the DB could be:
+
+```
+"product_2" : {
+    "name" : "Cling Film",
+    "image" : "http://scouts-catering.com/images/cling_film.jpg",
+    "length" : "500m",
+    "width" : "60cm",
+    }
+```
+
+Notice that the attributes for the cling film are different to the frying pan.
+
+Since I have all of this cookware, maybe I'll make and sell cakes too:
+
+```
+"product_2" : {
+    "name" : "Chocolate Cake",
+    "image" : "http://scouts-catering.com/images/chocolate_cake.jpg",
+    "Servings" : {
+        "size_1" : 12,
+        "size_2" : 18,
+        "size_3" : 24
+        }
+    "Weight" : {
+        "size_1" : 1.5kg,
+        "size_2" : 2.0kg,
+        "size_3" : 2.5kg
+    }
+    "ingredients" : ["flour", "eggs", "milk", "sugar", "butter", "cocoa"]
+    }
+```
+
+This is a slightly more complex JSON object, the values for they keys `Servings` and `Weight` are both individual JSON objects with multiple KVPs, representing different cake options. The `ingredients` key has multiple values, which I've provided with a JSON array (list).
+
+In addition to JSON objects and strings your NoSQL DB can store a variety of other data types, including binary data - Since all files and objects on our computers are actually binary at the lowest level, we can basically put anything digital into our DBs.
+
+## Comparing SQL and NoSQL
+
+When comparing the two categories of databases, there are a few points we've already covered:
+
+|   | SQL  | NoSQL  |
+|---|---|---|
+|Schema   |Fields and records must conform to a strict schema, defined when you create the table.  |Records do not have to follow a strict schema.|
+|Scaling|Typically limited to vertical scaling|Supports horizontal scaling|
+|Use cases|Designed for complex queries and transactions|Designed for rapid retrieval|
