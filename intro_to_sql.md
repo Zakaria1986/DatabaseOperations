@@ -572,3 +572,35 @@ When comparing the two categories of databases, there are a few points we've alr
 |Schema   |Fields and records must conform to a strict schema, defined when you create the table.  |Records do not have to follow a strict schema.|
 |Scaling|Typically limited to vertical scaling|Supports horizontal scaling|
 |Use cases|Designed for complex queries and transactions|Designed for rapid retrieval|
+
+But there are more factors to be aware of. 
+
+### Data Structure
+
+Organisations have access to vast amounts of data, much of which they can generate themselves, such as sales records, productivity data, financial data, etc. There are also lots of external sources, some is publicly accessible, some can be purchased from 3rd parties. This could include weather data, demographic info, market analysis reports, etc.
+
+#### Structured Data
+
+Generally speaking, when looking at a piece of data, if it has a clear meaning, we call this structured data.
+
+Consider `3665156958940023`, `01704568473`, or `150876`; Out of context these could be anything, but if we label them `card_no`, `tel`, and `DOB` suddenly they make sense. 
+
+In these cases we could enter them into a SQL database, and define the appropriate schema to ensure the data is added correctly - so the card field will not accept letters, and the DOB field only takes 6 numberical characters, and so on. 
+
+These are examples of structured data - the meaning of the data is clear, and it is suitable for adding to a SQL database.
+
+One of the reasons we want our data to be structured is so that we can use to add value to our organisation, by informing decision making.
+
+What products sell best, at what time of the year, in what region? You can construct SQL queries, to reveal these answers, assuming you have the relevant data.
+
+#### Unstructured Data
+
+Predictably, unstructured data is the opposite of structured, i.e. it is data which does not have a clear inherent meaning. This could be data which is gathered and stored, often in large quantities, such as log entries, sensor values, measurements, traffic data, etc. This data is often captured and dumped into text files, such as txt, CSV, JSON, XML, and others.
+
+Let's take:
+
+`12:45:54:12.01.25,24.101.57.13:54987,12:34:56:AB:CD:EF,197.165.1.24:443,centos`
+
+As it is, it's difficult to make any sense of the above string, it's unstructured. 
+
+Often unstructured 
