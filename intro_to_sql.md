@@ -607,4 +607,15 @@ Often unstructured data can be transformed into structured. In this case, if we 
 
 `HH:MM:SS:DD:MM:YY,SRC_IP:PORT,SRC_MAC,DST_IP,UNAME`
 
-This line identifies each unique piece of information in between the commas, and will usually (hopefully) be defined on the first line of a CSV. This can be used to define your table schema, allowing you to import the data into a SQL database, allowing you to extract value and inform decisions.
+This line identifies each unique piece of information in the log enrty above, delineated by commas, and will usually (hopefully) be defined on the first line of a CSV. This can be used to define your relational database' table schema, allowing you to import the data into a SQL database. This in turn allows it to be used in queries, so you can gain business value and inform decisions.
+
+### Data Pipelines
+
+A data pipeline describes the path data takes from being gathered, to being useable. A typical pipeline looks like this:
+
+            Data Lake --> Data Warehouse --> Database
+
+- A Data-Lake, into which RAW data can be deposited. 
+- Unstructured data from the lake can be extracted, and transformed into a semi-structured format, suitable for storing in a Data Warehouse.
+- Semi-structured data from the warehouse can then be transferred into a NoSQL DB if no further structure is necessary, or transformed into a structured format for ingestion into a SQL database.
+
