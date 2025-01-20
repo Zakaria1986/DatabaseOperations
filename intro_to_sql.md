@@ -615,7 +615,6 @@ A data pipeline describes the path data takes from being gathered, to being usea
 
             Data Lake --> Data Warehouse --> Database
 
-- A Data-Lake, into which RAW data can be deposited. 
+- A Data-Lake, into which RAW unstructured data can be deposited. 
 - Unstructured data from the lake can be extracted, and transformed into a semi-structured format, suitable for storing in a Data Warehouse.
 - Semi-structured data from the warehouse can then be transferred into a NoSQL DB if no further structure is necessary, or transformed into a structured format for ingestion into a SQL database.
-
