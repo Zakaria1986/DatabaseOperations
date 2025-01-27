@@ -69,13 +69,13 @@ SQL commands have simple syntax and conventions, compared to say Python or Bash.
 SELECT * FROM customers WHERE Name = “Company A”;
 ```
 
-Commonly they’re split over multiple lines for readability. SQL doesn’t care about newlines, it looks for the semi-colon (;) to end the statement.
+Commonly they’re split over multiple lines for readability. SQL doesn’t care about newlines, it looks for the semi-colon (;) to end the statement. 
 
 ```sql
 SELECT * FROM customers 
 WHERE Name = “Company A”;
 ```
-    Missing the semi-colon is a common mistake, if your terminal is showing this prompt `->` it often means you missed the `;`.
+Missing the semi-colon is a common mistake, if your terminal is showing this prompt `->` it often means you missed the `;`.
 
 One convention is that SQL keywords are capitalised, therefore for easy readability tables and fields are usually in lower case. **NOTE: SQL keywords are not case-sensitive, but database names, table names, and field names are.**
 
