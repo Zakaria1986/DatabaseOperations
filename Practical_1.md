@@ -103,4 +103,4 @@ The ```-u``` option specifies the username, we're logging in as root, press ente
 mysql>
 ```
 
-Exit MySQL and return to Linux with ```exit```.
+Exit MySQL and return to Linux with ```exit``` and **take a new snapshot**.
